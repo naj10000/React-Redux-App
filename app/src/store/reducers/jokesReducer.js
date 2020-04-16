@@ -1,5 +1,5 @@
 const initialState = {
-    
+    id: '',
     type: " ",
     setup: '',
     punchline: ''

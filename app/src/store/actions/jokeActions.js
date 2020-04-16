@@ -6,11 +6,10 @@ export const fetchJoke = () => {
         dispatch({ type: 'FETCH_JOKE_START'});
         axios
             .get('https://official-joke-api.appspot.com/jokes/random')
-             
             .then(res => {
-                console.log(res.data);
-                dispatch({ type: 'FETCH_JOKE_SUCCESS', payload: res.data });
                 
+                dispatch({ type: 'FETCH_JOKE_SUCCESS', payload: res.data });
+                console.log(res.data);
             })
             
             .catch(err => {

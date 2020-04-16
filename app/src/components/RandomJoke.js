@@ -17,8 +17,13 @@ import { fetchJoke }  from '../store/actions/jokeActions';
             {props.isFetching && (
                  <Loader type="Puff" color="#00BFFF" height={100} width={100} />
             )}
-            { <div>"{props.data}"</div>}
+            <div>
+                
+            {props.joke.setup && <p>"{props.joke.setup}"</p>}
+            {props.joke.punchline && <p>"{props.joke.punchline}"</p>}
             {props.error && <p className="error">{props.error}</p>}
+            
+            </div>
             <button onClick={props.fetchJoke}>Grab a new Joke</button>
         </div>
        
@@ -26,8 +31,9 @@ import { fetchJoke }  from '../store/actions/jokeActions';
 }
 
 const mapStateToProps = state => {
+    console.log(state);
     return {
-        joke: state.jokes.data,
+        joke: state.jokes.joke,
         isFetching: state.jokes.isFetching,
         error: state.jokes.error
     }

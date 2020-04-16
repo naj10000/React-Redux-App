@@ -1,8 +1,8 @@
 const initialState = {
-    id: '',
-    type: " ",
-    setup: '',
-    punchline: ''
+     joke:  '', 
+    isFetching: false,
+    error: '',
+
 }
 
 export const jokesReducer = (state = initialState, action) =>{
@@ -17,11 +17,11 @@ export const jokesReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 isFetching: false,
-                quote: action.payload,
+                joke: action.payload,
                 error: ''
             }
 
-        case 'FETCH_QUOTE_FAILURE':
+        case 'FETCH_JOKE_FAILURE':
             return {
                 ...state,
                 isFetching: false,

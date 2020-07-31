@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { fetchJoke }  from '../store/actions/jokeActions';
+import { Button, Card, CardTitle, CardText, Container } from 'reactstrap';
+
 
 
 
@@ -12,20 +14,22 @@ import { fetchJoke }  from '../store/actions/jokeActions';
     },[]);
 
     return(
-        <div>
+        <Container fluid="md">
+        <Card body inverse color="info">
              <h1>RandomJokes</h1>
             {props.isFetching && (
                  <Loader type="Puff" color="#00BFFF" height={100} width={100} />
             )}
             <div>
                 
-            {props.joke.setup && <p>"{props.joke.setup}"</p>}
-            {props.joke.punchline && <p>"{props.joke.punchline}"</p>}
+            {props.joke.setup && <CardText>"{props.joke.setup}"</CardText>}
+            {props.joke.punchline && <CardText>"{props.joke.punchline}"</CardText>}
             {props.error && <p className="error">{props.error}</p>}
             
             </div>
-            <button onClick={props.fetchJoke}>Grab a new Joke</button>
-        </div>
+            <Button color="danger" onClick={props.fetchJoke}>Grab a new Joke</Button>
+        </Card>
+        </Container>
        
     )
 }
